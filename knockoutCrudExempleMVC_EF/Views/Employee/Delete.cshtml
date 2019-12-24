@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+<h3>Are you sure you want to delete this?</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Employee</h4>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="FirstName">First Name</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="FirstName" name="FirstName" type="text" value="" data-bind="value: FirstName">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="LastName">Last Name</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="LastName" name="LastName" type="text" value="" data-bind="value: LastName">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Address">Address</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Address" name="Address" type="text" value="" data-bind="value: Address">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" data-bind="click: deleteEmployee" value="Delete" class="btn btn-default">
+            </div>
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    var selectedEmployee = '@Html.Raw(ViewBag.selectedEmployee)';
+</script>
+<div>
+    @Html.ActionLink("Back to List", "Read")
+</div>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/knockout-3.5.1.js"></script>
+<script src="~/Scripts/KOScripts/KODelete.js"></script>

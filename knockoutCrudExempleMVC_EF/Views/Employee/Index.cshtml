@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Employee ID
+        </th>
+        <th>
+            First Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            Address
+        </th>
+        <th></th>
+    </tr>
+    <tbody data-bind="foreach: Employees">
+        <tr>
+            <td data-bind="text: EmployeeID"></td>
+            <td data-bind="text: FirstName"></td>
+            <td data-bind="text: LastName"></td>
+            <td data-bind="text: Address"></td>
+            <td>
+                <a data-bind="attr: { 'href': '@Url.Action("Edit", "Employee")/' + EmployeeID }" class="btn-link">Edit</a>
+                <a data-bind="attr: { 'href': '@Url.Action("Delete", "Employee")/' + EmployeeID }" class="btn-link">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/knockout-3.5.1.js"></script>
+<script src="~/Scripts/KOScripts/KORead.js"></script>
